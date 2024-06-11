@@ -16,12 +16,21 @@ import org.springframework.web.bind.annotation.RestController;
 )
 public class HelloWorldController {
     @GetMapping ("hello-world")
+    @Operation(
+            summary = "Hello world",
+            description = "Returns 'Hello world' "
+    )
     public String helloWorld() {
         return "Hello World!" ;
     }
 
     @GetMapping("hello")
-    public String helloByName(@RequestParam String name){
+    @Operation(
+            summary = "Hello by name endpoint",
+            description = "Returns 'Hello {name} by request parameters  "
+    )
+    public String helloByName(@Parameter(description = "Name to greet") @RequestParam String name){
+
         return "Hello " + name;
     }
 
