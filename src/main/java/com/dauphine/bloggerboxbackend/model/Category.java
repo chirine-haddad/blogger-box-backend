@@ -1,17 +1,25 @@
 package com.dauphine.bloggerboxbackend.model;
+
+import jakarta.persistence.*;
 import java.util.UUID;
 
+@Entity
+@Table(name = "category")
 public class Category {
+    @Id
+ /*   @GeneratedValue(strategy = GenerationType.AUTO)*/
+    @Column(name = "id")
     private UUID id;
-    private String name;
 
-    // Constructors, getters, and setters
-    public Category() {}
+    @Column(name = "name")
+    private String name;
 
     public Category(UUID id, String name) {
         this.id = id;
         this.name = name;
     }
+
+    public Category() {}
 
     public UUID getId() {
         return id;

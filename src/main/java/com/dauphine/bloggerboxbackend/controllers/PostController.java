@@ -10,9 +10,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
-
 @RestController
-@RequestMapping("/v1/posts")
+@RequestMapping("/v2/posts")
 @Tag(name = "Post", description = "Endpoints for managing posts")
 public class PostController {
     private final PostService postService;
@@ -30,7 +29,7 @@ public class PostController {
     @PutMapping("/{id}")
     @Operation(summary = "Update an existing post")
     public Post updatePost(@PathVariable UUID id, @RequestBody UpdatePostRequest postRequest) {
-        return postService.update(id, postRequest.getTitle(), postRequest.getContent(), postRequest.getCategoryId());
+        return postService.update(id, postRequest.getTitle(), postRequest.getContent()/*, postRequest.getCategoryId()*/);
     }
 
     @DeleteMapping("/{id}")
@@ -56,4 +55,10 @@ public class PostController {
     public Post retrievePostById(@PathVariable UUID id) {
         return postService.getById(id);
     }
+
+    /*@GetMapping("/search")
+    @Operation(summary = "Retrieve all posts by title or content")  // Nouveau endpoint
+    public List<Post> retrievePostsByTitleOrContent(@RequestParam String keyword) {
+        return postService.getAllByTitleOrContent(keyword);
+    }*/
 }

@@ -2,11 +2,11 @@ package com.dauphine.bloggerboxbackend.dto;
 
 
 import java.util.UUID;
-
+import com.dauphine.bloggerboxbackend.model.Category;
 public class CreationPostRequest {
     private String title;
     private String content;
-    private UUID categoryId;
+    private Category category;
 
     // Getters and setters
     public String getTitle() {
@@ -25,11 +25,11 @@ public class CreationPostRequest {
         this.content = content;
     }
 
-    public UUID getCategoryId() {
-        return categoryId;
+    public Category getCategoryId() {
+        return category;
     }
 
-    public void setCategoryId(UUID categoryId) {
-        this.categoryId = categoryId;
+    public void setCategoryId(Category category) {
+        this.category = category;
     }
 }

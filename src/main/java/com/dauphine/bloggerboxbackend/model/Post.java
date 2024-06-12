@@ -1,24 +1,39 @@
 package com.dauphine.bloggerboxbackend.model;
 
+import jakarta.persistence.*;
 import java.util.UUID;
 import java.time.LocalDateTime;
 
+@Entity
+@Table(name = "post")
 public class Post {
+    @Id
+  /*  @GeneratedValue(strategy = GenerationType.AUTO)*/
+    @Column(name = "id")
     private UUID id;
-    private String title;
-    private String content;
-    private LocalDateTime createdDate;
-    private UUID categoryId;
 
-    // Constructors, getters, and setters
+    @Column(name = "title")
+    private String title;
+
+    @Lob
+    @Column(name = "content")
+    private String content;
+
+    @Column(name = "created_date")
+    private LocalDateTime createdDate;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
+
     public Post() {}
 
-    public Post(UUID id, String title, String content, LocalDateTime createdDate, UUID categoryId) {
-        this.id = id;
+    public Post(String title, String content, Category category) {
+        this.id = UUID.randomUUID();
         this.title = title;
         this.content = content;
-        this.createdDate = createdDate;
-        this.categoryId = categoryId;
+        this.createdDate = LocalDateTime.now();
+        this.category = category;
     }
 
     public UUID getId() {
@@ -53,11 +68,11 @@ public class Post {
         this.createdDate = createdDate;
     }
 
-    public UUID getCategoryId() {
-        return categoryId;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setCategoryId(UUID categoryId) {
-        this.categoryId = categoryId;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }

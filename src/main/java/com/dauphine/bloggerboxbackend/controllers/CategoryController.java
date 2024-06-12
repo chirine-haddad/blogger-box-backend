@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/v1/categories")
+@RequestMapping("/v2/categories")
 @Tag(name = "Category", description = "Endpoints for managing categories")
 public class CategoryController {
     private final CategoryService service;
@@ -49,5 +49,11 @@ public class CategoryController {
     @Operation(summary = "Delete a category")
     public void deleteCategory(@PathVariable UUID id) {
         service.deleteById(id);
+    }
+
+    @GetMapping("/name/{name}")
+    @Operation(summary = "Retrieve all categories by name")  // Nouveau endpoint
+    public List<Category> retrieveCategoriesByName(@PathVariable String name) {
+        return service.getAllByName(name);
     }
 }

@@ -1,6 +1,5 @@
 package com.dauphine.bloggerboxbackend.services;
 
-
 import com.dauphine.bloggerboxbackend.model.Category;
 
 import java.util.List;
@@ -10,6 +9,7 @@ public interface CategoryService {
     List<Category> getAll();
     Category getById(UUID id);
     Category create(String name);
-    Category updateName (UUID id, String name);
+    Category updateName(UUID id, String name);
     boolean deleteById(UUID id);
+    List<Category> getAllByName(String name);
 }
