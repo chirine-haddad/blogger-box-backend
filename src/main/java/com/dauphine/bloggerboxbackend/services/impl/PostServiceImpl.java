@@ -1,12 +1,11 @@
 package com.dauphine.bloggerboxbackend.services.impl;
 
-import com.dauphine.bloggerboxbackend.model.Category;
-import com.dauphine.bloggerboxbackend.model.Post;
+import com.dauphine.bloggerboxbackend.models.Post;
+import com.dauphine.bloggerboxbackend.models.Category;
 import com.dauphine.bloggerboxbackend.repositories.PostRepository;
 import com.dauphine.bloggerboxbackend.services.PostService;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -35,9 +34,7 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public Post create(String title, String content, Category category) {
-        Post post = new Post(title, content,category);
-
-
+        Post post = new Post(title, content, category);
         return repository.save(post);
     }
 
@@ -47,7 +44,6 @@ public class PostServiceImpl implements PostService {
         if (post != null) {
             post.setTitle(title);
             post.setContent(content);
-
             return repository.save(post);
         }
         return null;
@@ -61,6 +57,4 @@ public class PostServiceImpl implements PostService {
         }
         return false;
     }
-
-
 }

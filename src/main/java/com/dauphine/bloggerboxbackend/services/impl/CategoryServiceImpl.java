@@ -1,6 +1,6 @@
 package com.dauphine.bloggerboxbackend.services.impl;
 
-import com.dauphine.bloggerboxbackend.model.Category;
+import com.dauphine.bloggerboxbackend.models.Category;
 import com.dauphine.bloggerboxbackend.repositories.CategoryRepository;
 import com.dauphine.bloggerboxbackend.services.CategoryService;
 import org.springframework.stereotype.Service;

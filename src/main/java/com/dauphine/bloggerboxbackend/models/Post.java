@@ -1,4 +1,4 @@
-package com.dauphine.bloggerboxbackend.model;
+package com.dauphine.bloggerboxbackend.models;
 
 import jakarta.persistence.*;
 import java.util.UUID;
@@ -8,14 +8,13 @@ import java.time.LocalDateTime;
 @Table(name = "post")
 public class Post {
     @Id
-  /*  @GeneratedValue(strategy = GenerationType.AUTO)*/
     @Column(name = "id")
     private UUID id;
 
     @Column(name = "title")
     private String title;
 
-    @Lob
+
     @Column(name = "content")
     private String content;
 

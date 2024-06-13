@@ -1,8 +1,7 @@
 package com.dauphine.bloggerboxbackend.dto;
 
 
-import java.util.UUID;
-import com.dauphine.bloggerboxbackend.model.Category;
+import com.dauphine.bloggerboxbackend.models.Category;
 public class CreationPostRequest {
     private String title;
     private String content;

@@ -1,8 +1,9 @@
 package com.dauphine.bloggerboxbackend.controllers;
 
+
 import com.dauphine.bloggerboxbackend.dto.CreationCategoryRequest;
 import com.dauphine.bloggerboxbackend.dto.UpdateCategoryRequest;
-import com.dauphine.bloggerboxbackend.model.Category;
+import com.dauphine.bloggerboxbackend.models.Category;
 import com.dauphine.bloggerboxbackend.services.CategoryService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -12,8 +13,9 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/v2/categories")
-@Tag(name = "Category", description = "Endpoints for managing categories")
+@RequestMapping("/v1/categories")
+@Tag(
+        name = "Category Controller", description = "Endpoints for managing categories")
 public class CategoryController {
     private final CategoryService service;
 

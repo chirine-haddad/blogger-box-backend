@@ -1,4 +1,4 @@
-package com.dauphine.bloggerboxbackend.model;
+package com.dauphine.bloggerboxbackend.models;
 
 import jakarta.persistence.*;
 import java.util.UUID;
@@ -7,7 +7,7 @@ import java.util.UUID;
 @Table(name = "category")
 public class Category {
     @Id
- /*   @GeneratedValue(strategy = GenerationType.AUTO)*/
+
     @Column(name = "id")
     private UUID id;
 

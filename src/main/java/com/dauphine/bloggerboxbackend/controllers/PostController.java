@@ -1,8 +1,8 @@
 package com.dauphine.bloggerboxbackend.controllers;
 
-import com.dauphine.bloggerboxbackend.model.Post;
 import com.dauphine.bloggerboxbackend.dto.CreationPostRequest;
 import com.dauphine.bloggerboxbackend.dto.UpdatePostRequest;
+import com.dauphine.bloggerboxbackend.models.Post;
 import com.dauphine.bloggerboxbackend.services.PostService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -10,10 +10,12 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
+
 @RestController
-@RequestMapping("/v2/posts")
+@RequestMapping("/v1/posts")
 @Tag(name = "Post", description = "Endpoints for managing posts")
 public class PostController {
+
     private final PostService postService;
 
     public PostController(PostService postService) {
@@ -29,7 +31,7 @@ public class PostController {
     @PutMapping("/{id}")
     @Operation(summary = "Update an existing post")
     public Post updatePost(@PathVariable UUID id, @RequestBody UpdatePostRequest postRequest) {
-        return postService.update(id, postRequest.getTitle(), postRequest.getContent()/*, postRequest.getCategoryId()*/);
+        return postService.update(id, postRequest.getTitle(), postRequest.getContent());
     }
 
     @DeleteMapping("/{id}")
@@ -55,10 +57,4 @@ public class PostController {
     public Post retrievePostById(@PathVariable UUID id) {
         return postService.getById(id);
     }
-
-    /*@GetMapping("/search")
-    @Operation(summary = "Retrieve all posts by title or content")  // Nouveau endpoint
-    public List<Post> retrievePostsByTitleOrContent(@RequestParam String keyword) {
-        return postService.getAllByTitleOrContent(keyword);
-    }*/
 }
