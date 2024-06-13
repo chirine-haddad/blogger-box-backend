@@ -4,7 +4,7 @@ import com.dauphine.bloggerboxbackend.models.Category;
 import com.dauphine.bloggerboxbackend.repositories.CategoryRepository;
 import com.dauphine.bloggerboxbackend.services.CategoryService;
 import org.springframework.stereotype.Service;
-
+import com.dauphine.bloggerboxbackend.exceptions.*;
 import java.util.List;
 import java.util.UUID;
 
@@ -22,19 +22,19 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public Category getById(UUID id) {
+    public Category getById(UUID id) throws CategoryNotFoundIdException  {
         return repository.findById(id).orElse(null);
     }
 
     @Override
-    public Category create(String name) {
+    public Category create(String name) throws CategoryAlreadyExistsException {
         Category category = new Category(UUID.randomUUID(), name);
 
         return repository.save(category);
     }
 
     @Override
-    public Category updateName(UUID id, String name) {
+    public Category updateName(UUID id, String name) throws CategoryNotFoundIdException, CategoryAlreadyExistsException {
         Category category = getById(id);
         if (category != null) {
             category.setName(name);
@@ -44,7 +44,7 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public boolean deleteById(UUID id) {
+    public boolean deleteById(UUID id) throws CategoryNotFoundIdException{
         repository.deleteById(id);
         return true;
     }
