@@ -1,6 +1,5 @@
 package com.dauphine.bloggerboxbackend.dto;
 
-
 import com.dauphine.bloggerboxbackend.models.Category;
 public class CreationPostRequest {
     private String title;
